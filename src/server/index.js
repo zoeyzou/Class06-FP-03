@@ -8,8 +8,11 @@ const port = process.env.PORT || 5000;
 
 // eslint-disable-next-line no-undef
 const filePath = path.join(__dirname, "db.json");
-
 const testData = JSON.parse(fs.readFileSync(filePath, "utf8"));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("../client/build"));
+}
 
 app.get("/", cors(), (req, res) => res.send(testData));
 
