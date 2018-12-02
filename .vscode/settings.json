@@ -1,0 +1,13 @@
+{
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint._legacyModuleResolve": true,
+  "eslint.run": "onSave",
+  "prettier.eslintIntegration": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveTimeout": 1500,
+  "prettier.requireConfig": true,
+  "prettier.printWidth": 100,
+  "prettier.stylelintIntegration": true,
+  "prettier.trailingComma": "es5"
+}
