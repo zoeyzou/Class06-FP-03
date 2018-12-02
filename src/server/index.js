@@ -1,11 +1,14 @@
-const fs = require('fs');
-const util = require('util');
+const fs = require("fs");
+const path = require("path");
 
-const path = require('path');
+const express = require("express");
+const app = express();
+const port = 5000;
 
-const filePath = path.join(__dirname, 'db.json');
+const filePath = path.join(__dirname, "db.json");
 
-const readFile = util.promisify(fs.readFile);
-const writeFile = util.promisify(fs.writeFile);
+const testData = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
-readFile(filePath, 'utf8').then(file => console.log(file));
+app.get("/", (req, res) => res.send(testData));
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
