@@ -6,10 +6,23 @@ class App extends Component {
     mentors: null,
   };
   componentDidMount() {
-    fetchMentor().then(data => this.setState({ mentors: data }));
+    fetchMentor().then(response => this.setState({ mentors: response.data }));
   }
   render() {
-    return <div className="App">{JSON.stringify(this.state.mentors)}</div>;
+    const { mentors } = this.state;
+
+    return (
+      <div className="App">
+        <ul>
+          {mentors &&
+            mentors.map(mentor => (
+              <li key={mentor.id}>
+                {mentor.first_name} {mentor.last_name}
+              </li>
+            ))}
+        </ul>
+      </div>
+    );
   }
 }
 
