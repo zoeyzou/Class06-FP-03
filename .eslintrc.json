@@ -5,7 +5,7 @@
     "commonjs": true,
     "es6": true
   },
-  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "extends": ["eslint:recommended", "plugin:prettier/recommended", "plugin:react/recommended"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
@@ -21,6 +21,19 @@
     "semi": ["warn", "always"],
     "prettier/prettier": "error",
     "no-unused-vars": "warn",
-    "no-console": "off"
+    "no-console": "off",
+    "react/jsx-uses-vars": "warn"
+  },
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "flowVersion": "0.53"
+    },
+    "propWrapperFunctions": [
+      "forbidExtraProps",
+      { "property": "freeze", "object": "Object" },
+      { "property": "myFavoriteWrapper" }
+    ]
   }
 }
