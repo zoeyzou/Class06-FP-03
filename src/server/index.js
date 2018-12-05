@@ -11,6 +11,6 @@ const filePath = path.join(__dirname, "db.json");
 
 const testData = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
-app.get("/", cors(), (req, res) => res.send(testData));
+app.get("/api/mentors", cors(), (req, res) => res.send(testData));
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
