@@ -6,6 +6,9 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 5000;
 
+const buildPath = path.join(__dirname, "../../build");
+app.use(express.static(buildPath));
+
 // eslint-disable-next-line no-undef
 const filePath = path.join(__dirname, "db.json");
 
