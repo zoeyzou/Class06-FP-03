@@ -2,7 +2,6 @@
   "name": "class06-fp-03",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@babel/core": "7.1.0",
     "@svgr/webpack": "2.4.1",
@@ -64,10 +63,10 @@
     "prettier": "^1.15.3"
   },
   "scripts": {
-    "dev": "concurrently \"node scripts/start.js\" \"node src/server/index.js\"",
     "start": "node scripts/start.js",
     "server": "node src/server/index.js",
     "build": "node scripts/build.js",
+    "dev": "concurrently \"node scripts/start.js\" \"node src/server/index.js\"",
     "test": "node scripts/test.js",
     "heroku-postbuild": "npm install && npm run build"
   },
@@ -117,5 +116,6 @@
       "jsx",
       "node"
     ]
-  }
+  },
+  "proxy": "http://localhost:5000/"
 }
