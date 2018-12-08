@@ -10,7 +10,7 @@ const buildPath = path.join(__dirname, "../../build");
 
 //mysql connection
 const mysql = require("mysql");
-const config = require("./config");
+const config = require("./config.js");
 const connection = mysql.createConnection(process.env.JAWSDB_URL || config);
 
 connection.connect(err => {
