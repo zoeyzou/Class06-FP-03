@@ -11,7 +11,12 @@ const buildPath = path.join(__dirname, "../../build");
 //mysql connection
 const mysql = require("mysql");
 const config = require("./config.js");
-const connection = mysql.createConnection(process.env.JAWSDB_URL || config);
+const connection = mysql.createConnection({
+  host: process.env.host || config.host,
+  user: process.env.user || config.user,
+  password: process.env.password || config.password,
+  database: process.env.database || config.database,
+});
 
 connection.connect(err => {
   if (err) throw err;
