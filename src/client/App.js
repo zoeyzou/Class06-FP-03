@@ -2,9 +2,14 @@ import React, { Component } from "react";
 import { fetchMentor } from "./api/api";
 
 class App extends Component {
-  state = {
-    mentors: null,
-  };
+  constructor(props) {
+    super();
+    this.state = {
+      mentors: null,
+      value: "",
+    };
+  }
+
   componentDidMount() {
     fetchMentor().then(response => this.setState({ mentors: response.data }));
   }
@@ -22,6 +27,8 @@ class App extends Component {
               </li>
             ))}
         </ul>
+        <input type="text" value="" />
+        <button>add</button>
       </div>
     );
   }
