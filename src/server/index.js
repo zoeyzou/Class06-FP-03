@@ -11,7 +11,7 @@ const buildPath = path.join(__dirname, "../../build");
 //mysql connection
 const mysql = require("mysql");
 const config = require("./config");
-const connection = mysql.createConnection(config);
+const connection = mysql.createConnection(process.env.JAWSDB_URL || config);
 
 connection.connect(err => {
   if (err) throw err;
@@ -21,11 +21,6 @@ connection.connect(err => {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(buildPath));
 }
-
-// eslint-disable-next-line no-undef
-const filePath = path.join(__dirname, "db.json");
-const testData = JSON.parse(fs.readFileSync(filePath, "utf8")); //testdata to read from api
-//
 
 //CRUD actions
 function getMentors(readTable) {
