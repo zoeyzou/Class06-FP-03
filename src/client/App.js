@@ -17,7 +17,8 @@ class App extends Component {
           {mentors &&
             mentors.map(mentor => (
               <li key={mentor.id}>
-                {mentor.first_name} {mentor.last_name}
+                {mentor.first_name} {mentor.last_name}{" "}
+                <a href={mentor.Slack_nickname}>{mentor.Slack_nickname}</a>
               </li>
             ))}
         </ul>
