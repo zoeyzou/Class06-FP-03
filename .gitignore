@@ -5,17 +5,11 @@
 /.pnp
 .pnp.js
 
-#db config
-/src/server/config.js
-
 # testing
 /coverage
 
 # production
 /build
-
-#db config
-/src/server/config.js
 
 # misc
 .DS_Store
