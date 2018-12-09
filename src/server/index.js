@@ -1,4 +1,3 @@
-const fs = require("fs");
 const path = require("path");
 
 //express
@@ -36,7 +35,6 @@ function getMentors(readTable) {
 }
 
 app.get("/api/mentors", cors(), (req, res) => {
-  // res.send(testData)
   getMentors(function(results) {
     res.send(JSON.stringify(results));
   });
