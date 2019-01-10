@@ -22,6 +22,18 @@ class App extends Component {
               </li>
             ))}
         </ul>
+        <iframe
+          src={
+            "https://calendar.google.com/calendar/embed?src=classroom111372623996470615725%40group.calendar.google.com&ctz=Europe%2FCopenhagen"
+          }
+          style={{
+            borderWidth: 0,
+            width: "800px",
+            height: "600px",
+          }}
+          frameBorder="0"
+          scrolling="no"
+        />
       </div>
     );
   }

@@ -20,7 +20,7 @@
     "quotes": ["warn", "double"],
     "semi": ["warn", "always"],
     "prettier/prettier": "error",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
     "no-console": "off",
     "react/jsx-uses-vars": "warn"
   },
