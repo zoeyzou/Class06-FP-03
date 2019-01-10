@@ -59,11 +59,11 @@ pool.createNewUserFromGoogleId = function(googleID, fullName, imgURL) {
 };
 
 //CRUD actions
-pool.getMentors = function(readTable) {
+pool.getMentors = function() {
   return new Promise((resolve, reject) => {
     this.query("SELECT * from mentors", function(error, results, fields) {
       if (error) throw error;
-      readTable(results);
+      resolve(results);
     });
   });
 };

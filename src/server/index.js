@@ -12,20 +12,28 @@ const app = express();
 const port = process.env.PORT || 5000;
 const buildPath = path.join(__dirname, "../../build");
 
-// //mysql connection
-// const mysql = require("mysql");
-// const config = require("./database/dbConfig.js");
-// const connection = mysql.createConnection({
-//   host: process.env.host || config.host,
-//   user: process.env.user || config.user,
-//   password: process.env.password || config.password,
-//   database: process.env.database || config.database,
-// });
+//mysql connection
+const mysql = require("mysql");
+const config = require("./database/dbConfig.js");
+const connection = mysql.createConnection({
+  host: process.env.host || config.host,
+  user: process.env.user || config.user,
+  password: process.env.password || config.password,
+  database: process.env.database || config.database,
+});
 
-// connection.connect(err => {
-//   if (err) throw err;
-//   console.log("connected");
-// });
+connection.connect(err => {
+  if (err) throw err;
+  console.log("connected");
+});
+
+//CRUD actions
+function getMentors(readTable) {
+  connection.query("SELECT * from mentors", function(error, results, fields) {
+    if (error) throw error;
+    readTable(results);
+  });
+}
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(buildPath));
@@ -67,7 +75,7 @@ app.get("/*", (req, res) => {
 });
 
 app.get("/api/mentors", cors(), (req, res) => {
-  pool.getMentors(function(results) {
+  getMentors(function(results) {
     res.send(JSON.stringify(results));
   });
 });
