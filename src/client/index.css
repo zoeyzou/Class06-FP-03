@@ -6,9 +6,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 50px auto;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.formWrapper{
+  display: flex;
+  justify-content: center;  
+}
+label{
+  display: block;
+  width: 10%;  
+  
+}
+input{
+  margin-top: 5px;  
+  margin-bottom: 15px;  
+}
+button{
+  padding: 10px;
 }
