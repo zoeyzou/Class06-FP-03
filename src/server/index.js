@@ -6,6 +6,9 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 5000;
 const buildPath = path.join(__dirname, "../../build");
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.json());
 
 //mysql connection
 const mysql = require("mysql");
@@ -27,21 +30,29 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //CRUD actions
-function getMentors(readTable) {
-  connection.query("SELECT * from mentors", function(error, results, fields) {
-    if (error) throw error;
-    readTable(results);
-  });
-}
 
-app.get("/api/mentors", cors(), (req, res) => {
-  getMentors(function(results) {
-    res.send(JSON.stringify(results));
-  });
-});
+app.post("/users", function(req, res) {
+  const post = {
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    role: "mentor",
+  };
 
-app.post("/api/mentors", function(req, res) {
-  res.send("something");
+  connection.query("INSERT INTO users SET ?", post, function(err, result) {
+    if (err) throw err;
+
+    console.log(result);
+
+    res.send({
+      user: {
+        id: result.insertId,
+        name: post.name,
+        email: post.email,
+        role: post.role,
+      },
+    });
+  });
 });
 
 app.get("/static/*", (req, res) => {
